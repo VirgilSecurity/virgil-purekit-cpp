@@ -43,9 +43,9 @@ set(CMAKE_CXX_STANDARD 11)
 configure_file(CMakeLists.txt.in
         googletest-download/CMakeLists.txt)
 execute_process(COMMAND ${CMAKE_COMMAND} -G "${CMAKE_GENERATOR}" .
-        WORKING_DIRECTORY ${CMAKE_BINARY_DIR}/tests/googletest/googletest-download )
+        WORKING_DIRECTORY ${CMAKE_BINARY_DIR}/ext/googletest/googletest-download )
 execute_process(COMMAND ${CMAKE_COMMAND} --build .
-        WORKING_DIRECTORY ${CMAKE_BINARY_DIR}/tests/googletest/googletest-download )
+        WORKING_DIRECTORY ${CMAKE_BINARY_DIR}/ext/googletest/googletest-download )
 
 # Prevent GoogleTest from overriding our compiler/linker options
 # when building with Visual Studio
