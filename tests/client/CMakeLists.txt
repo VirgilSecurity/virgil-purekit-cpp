@@ -32,9 +32,16 @@
 #
 #   Lead Maintainer: Virgil Security Inc. <support@virgilsecurity.com>
 
+
 cmake_minimum_required(VERSION 3.14 FATAL_ERROR)
 project(virgil-purekit-cpp)
 
-set(CMAKE_CXX_STANDARD 11)
 
-add_subdirectory(${CMAKE_CURRENT_LIST_DIR}/tests)
+add_executable(dummy_test)
+target_sources(dummy_test
+        PRIVATE
+            ${CMAKE_CURRENT_LIST_DIR}/dummy_test.cpp
+        )
+
+target_link_libraries(dummy_test gtest gmock_main)
+add_test(NAME dummy_test COMMAND dummy_test)
