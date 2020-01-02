@@ -1,0 +1,8 @@
+[submodule "virgil-crypto-c"]
+	path = ext/virgil-crypto-c
+	url = https://github.com/VirgilSecurity/virgil-crypto-c
+	branch = v0.11.1
+[submodule "googletest"]
+	path = ext/googletest
+	url = https://github.com/google/googletest
+	branch = release-1.10.0
