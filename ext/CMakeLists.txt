@@ -36,4 +36,10 @@
 cmake_minimum_required(VERSION 3.14 FATAL_ERROR)
 project(virgil-purekit-cpp)
 add_subdirectory(googletest)
-add_subdirectory(virgil-crypto)
+add_subdirectory(virgil-crypto-c)
+add_subdirectory(curlpp)
+
+target_include_directories(curlpp
+        PUBLIC
+            ${CMAKE_CURRENT_LIST_DIR}/curlpp/include
+        )

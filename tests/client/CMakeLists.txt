@@ -43,5 +43,8 @@ target_sources(test_dummy
         ${CMAKE_CURRENT_LIST_DIR}/test_dummy.cpp
         )
 
-target_link_libraries(test_dummy gtest gmock_main vsc::foundation)
+target_link_libraries(test_dummy
+        PRIVATE
+        gtest gmock_main vsc::foundation curlpp
+        )
 add_test(NAME test_dummy COMMAND dummy_test)

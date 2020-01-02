@@ -6,3 +6,7 @@
 	path = ext/googletest
 	url = https://github.com/google/googletest
 	branch = release-1.10.0
+[submodule "curlpp"]
+	path = ext/curlpp
+	url = https://github.com/jpbarrette/curlpp
+	branch = v0.8.1
