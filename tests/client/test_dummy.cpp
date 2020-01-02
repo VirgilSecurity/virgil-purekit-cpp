@@ -6,6 +6,10 @@
 #include <curlpp/Easy.hpp>
 #include <curlpp/Options.hpp>
 
+#include "purekit.pb.h"
+
+
+
 TEST(One, EqualsOne) {
     EXPECT_EQ(1, 1);
 }
@@ -46,4 +50,9 @@ TEST(CURL, DummyCurl) {
     {
         std::cout << e.what() << std::endl;
     }
+}
+
+TEST(PROTOBUF , Dummy) {
+    build::DatabaseRecord r;
+
 }

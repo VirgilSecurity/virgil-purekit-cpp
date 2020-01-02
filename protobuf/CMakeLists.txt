@@ -36,15 +36,32 @@
 cmake_minimum_required(VERSION 3.14 FATAL_ERROR)
 project(virgil-purekit-cpp)
 
+find_package(Protobuf REQUIRED)
 
-add_executable(test_dummy)
-target_sources(test_dummy
-        PRIVATE
-        ${CMAKE_CURRENT_LIST_DIR}/test_dummy.cpp
+protobuf_generate_cpp(PROTO_SRC PROTO_HEADER
+        ${CMAKE_CURRENT_LIST_DIR}/proto/purekit.proto
+        ${CMAKE_CURRENT_LIST_DIR}/proto/purekitV3_client.proto
+        ${CMAKE_CURRENT_LIST_DIR}/proto/purekitV3_crypto.proto
+        ${CMAKE_CURRENT_LIST_DIR}/proto/purekitV3_grant.proto
+        ${CMAKE_CURRENT_LIST_DIR}/proto/purekitV3_storage.proto
         )
 
-target_link_libraries(test_dummy
+add_library(protobuf_models)
+
+target_sources(protobuf_models
         PRIVATE
-        gtest gmock_main vsc::foundation curlpp protobuf_models
+            ${PROTO_SRC}
+            ${PROTO_HEADER}
         )
-add_test(NAME test_dummy COMMAND dummy_test)
+
+target_link_libraries(protobuf_models
+        PUBLIC
+            ${Protobuf_LIBRARIES}
+        )
+
+target_include_directories(protobuf_models
+        PUBLIC
+            ${CMAKE_CURRENT_BINARY_DIR}
+            ${Protobuf_INCLUDE_DIRS}
+        )
+

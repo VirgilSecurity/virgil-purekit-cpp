@@ -38,4 +38,5 @@ project(virgil-purekit-cpp)
 set(CMAKE_CXX_STANDARD 11)
 
 add_subdirectory(${CMAKE_CURRENT_LIST_DIR}/ext)
+add_subdirectory(${CMAKE_CURRENT_LIST_DIR}/protobuf)
 add_subdirectory(${CMAKE_CURRENT_LIST_DIR}/tests)
