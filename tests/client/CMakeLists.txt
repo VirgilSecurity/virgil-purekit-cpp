@@ -37,14 +37,14 @@ cmake_minimum_required(VERSION 3.14 FATAL_ERROR)
 project(virgil-purekit-cpp)
 
 
-add_executable(test_dummy)
-target_sources(test_dummy
+add_executable(test_client)
+target_sources(test_client
         PRIVATE
-        ${CMAKE_CURRENT_LIST_DIR}/test_dummy.cpp
+        ${CMAKE_CURRENT_LIST_DIR}/test_client.cpp
         )
 
-target_link_libraries(test_dummy
+target_link_libraries(test_client
         PRIVATE
-        gtest gmock_main vsc::foundation curlpp protobuf_models
+        gtest gmock_main vsc::foundation curlpp protobuf_models pure
         )
-add_test(NAME test_dummy COMMAND dummy_test)
+add_test(NAME test_client COMMAND test_client)
