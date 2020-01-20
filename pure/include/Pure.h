@@ -6,16 +6,18 @@
 #define VIRGIL_PUREKIT_CPP_PURE_H
 
 #include <string>
-#include "HttpPheClient.h"
+#include <HttpPheClient.h>
 
 class Pure {
 
 public:
     void registerUser(std::string userID, std::string password) throw();
 
+    void readEnvironments();
+
 
 private:
-    HttpPheClient pheClient;
+   HttpPheClient httpPheClient;
 
 };
 

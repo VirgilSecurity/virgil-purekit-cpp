@@ -14,11 +14,9 @@ target_sources(httpPheClient
 target_include_directories(httpPheClient
         PUBLIC
         $<BUILD_INTERFACE:${CMAKE_CURRENT_LIST_DIR}/include>
-)
-
-target_link_libraries(httpPheClient
-        PRIVATE
-            protobuf_models
-            httpClientProtobuf
         )
 
+target_link_libraries(httpPheClient
+        PUBLIC
+        httpClientProtobuf
+        )

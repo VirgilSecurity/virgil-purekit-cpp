@@ -9,13 +9,22 @@
 #include <curlpp/Exception.hpp>
 
 #include <purekit.pb.h>
+#include <sstream>
+#include <fstream>
+
+#include <google/protobuf/util/json_util.h>
+static std::string ProtoToJson(const google::protobuf::Message& proto)
+{
+    std::string json;
+    google::protobuf::util::MessageToJsonString(proto, &json);
+    return json;
+}
+
 
 
 void HttpClientProtobuf::fireGet(build::EnrollmentRequest enrollmentRequest) {
 
     char *url = "https://api2-dev.virgilsecurity.com/phe/v1/enroll";
-
-
 
     try {
         curlpp::Cleanup cleaner;
@@ -35,13 +44,30 @@ void HttpClientProtobuf::fireGet(build::EnrollmentRequest enrollmentRequest) {
 
         std::string enrolmentRequstString = enrollmentRequest.SerializeAsString();
 
-
-
         request.setOpt(new curlpp::options::PostFields(enrolmentRequstString.c_str()));
         request.setOpt(new curlpp::options::PostFieldSize(enrolmentRequstString.size()));
 
+        std::stringstream result;
 
+        request.setOpt(cURLpp::Options::WriteStream(&result));
         request.perform();
+
+        build::EnrollmentResponse enrollmentResponse;
+
+        enrollmentResponse.ParseFromIstream(&result);
+
+
+        // Request
+
+        std::cout << "Request\n";
+
+        std::cout << ProtoToJson(enrollmentRequest);
+
+        std::cout << "\nResponse\n";
+
+        std::cout << ProtoToJson(enrollmentResponse);
+
+
     }
     catch ( curlpp::LogicError & e ) {
         std::cout << e.what() << std::endl;

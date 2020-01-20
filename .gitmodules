@@ -10,3 +10,6 @@
 	path = ext/curlpp
 	url = https://github.com/jpbarrette/curlpp
 	branch = v0.8.1
+[submodule "ext/json"]
+	path = ext/json
+	url = https://github.com/nlohmann/json

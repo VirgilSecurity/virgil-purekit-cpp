@@ -42,3 +42,5 @@ add_subdirectory(${CMAKE_CURRENT_LIST_DIR}/protobuf)
 add_subdirectory(${CMAKE_CURRENT_LIST_DIR}/pure)
 
 add_subdirectory(${CMAKE_CURRENT_LIST_DIR}/tests)
+
+configure_file(env.json ${CMAKE_CURRENT_BINARY_DIR}/tests/client/env.json COPYONLY)

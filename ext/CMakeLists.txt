@@ -38,6 +38,7 @@ project(virgil-purekit-cpp)
 add_subdirectory(googletest)
 add_subdirectory(virgil-crypto-c)
 add_subdirectory(curlpp)
+add_subdirectory(json)
 
 target_include_directories(curlpp
         PUBLIC

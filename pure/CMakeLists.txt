@@ -23,6 +23,9 @@ target_include_directories(pure
 target_link_libraries(pure
         PUBLIC
             httpPheClient
+            #httpClientProtobuf
             protobuf_models
+        PRIVATE
+            nlohmann_json::nlohmann_json
         )
 

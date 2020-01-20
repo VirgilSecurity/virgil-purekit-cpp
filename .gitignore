@@ -10,6 +10,7 @@ codegen/test/gsl/
 # OS X temporary files that should never be committed
 
 .DS_Store
+env.json
 *.swp
 *.lock
 profile

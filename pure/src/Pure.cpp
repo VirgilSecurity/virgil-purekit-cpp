@@ -4,7 +4,9 @@
 
 #include <Pure.h>
 #include "purekit.pb.h"
-
+#include "HttpClientProtobuf.h"
+#include <fstream>
+#include <nlohmann/json.hpp>
 
 
 
@@ -13,9 +15,18 @@ void Pure::registerUser(std::string userID, std::string password) throw() {
 
     EnrollmentRequest enrollmentRequest;
     enrollmentRequest.set_version(2);
+    readEnvironments();
 
-    HttpPheClient pheClient;
+    HttpClientProtobuf httpClientProtobuf;
+    httpClientProtobuf.fireGet(enrollmentRequest);
 
-    pheClient.enrollAcount(enrollmentRequest);
 
+}
+
+void Pure::readEnvironments() {
+    
+    std::ifstream i("env.json");
+    nlohmann::json j;
+    i >> j;
+    std::cout << j["dev"]["PHE_SERVER_ADDRESS"] << std::endl;
 }
