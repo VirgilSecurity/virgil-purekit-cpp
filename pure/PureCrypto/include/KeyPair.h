@@ -57,7 +57,7 @@ public:
      */
     const PrivateKey& privateKey() const { return privateKey_; }
 
-private:
+public:
     KeyPair(PrivateKey privateKey, PublicKey publicKey);
 
     PrivateKey privateKey_;

@@ -42,7 +42,7 @@
  * @brief Container for Public Key which is used for crypto operations.
  */
 class PublicKey {
-private:
+public:
     PublicKey(VirgilByteArray key, VirgilByteArray identifier);
 
     const VirgilByteArray &key() const { return key_; }

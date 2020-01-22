@@ -43,7 +43,7 @@
  * @brief Container for Private Key which is used for crypto operations.
  */
 class PrivateKey {
-private:
+public:
     PrivateKey(VirgilByteArray key, VirgilByteArray identifier);
 
     const VirgilByteArray &key() const { return key_; }
