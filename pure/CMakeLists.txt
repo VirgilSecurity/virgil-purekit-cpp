@@ -4,28 +4,42 @@ project(virgil-purekit-cpp)
 
 add_library(pure)
 
-
-add_subdirectory(HttpClientProtobuf)
-add_subdirectory(HttpPheClient)
+# add_subdirectory(HttpPheClient)
 
 target_sources(pure
         PRIVATE
 
         ${CMAKE_CURRENT_LIST_DIR}/include/Pure.h
+        ${CMAKE_CURRENT_LIST_DIR}/PureCrypto/include/PureCrypto.h
+        ${CMAKE_CURRENT_LIST_DIR}/HttpPheClient/include/HttpPheClient.h
+        ${CMAKE_CURRENT_LIST_DIR}/PureCrypto/include/KeyPair.h
+        ${CMAKE_CURRENT_LIST_DIR}/PureCrypto/include/PrivateKey.h
+        ${CMAKE_CURRENT_LIST_DIR}/PureCrypto/include/PublicKey.h
+
+        ${CMAKE_CURRENT_LIST_DIR}/PureCrypto/include/Common.h
+
         ${CMAKE_CURRENT_LIST_DIR}/src/Pure.cpp
+        ${CMAKE_CURRENT_LIST_DIR}/PureCrypto/src/PureCrypto.cpp
+        ${CMAKE_CURRENT_LIST_DIR}/HttpPheClient/src/HttpPheClient.cpp
+
+        ${CMAKE_CURRENT_LIST_DIR}/PureCrypto/src/KeyPair.cpp
+        ${CMAKE_CURRENT_LIST_DIR}/PureCrypto/src/PrivateKey.cpp
+        ${CMAKE_CURRENT_LIST_DIR}/PureCrypto/src/PublicKey.cpp
+
         )
 
 target_include_directories(pure
         PUBLIC
         $<BUILD_INTERFACE:${CMAKE_CURRENT_LIST_DIR}/include>
+        $<BUILD_INTERFACE:${CMAKE_CURRENT_LIST_DIR}/PureCrypto/include>
+        $<BUILD_INTERFACE:${CMAKE_CURRENT_LIST_DIR}/HttpPheClient/include>
 )
 
 target_link_libraries(pure
-        PUBLIC
-            httpPheClient
-            #httpClientProtobuf
-            protobuf_models
         PRIVATE
+            protobuf_models
             nlohmann_json::nlohmann_json
+            curlpp
+            vsc::foundation
         )
 

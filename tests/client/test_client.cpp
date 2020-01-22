@@ -14,4 +14,5 @@ TEST(PROTOBUF , Dummy) {
     Pure pure;
     pure.registerUser("alex", "password");
 
+
 }

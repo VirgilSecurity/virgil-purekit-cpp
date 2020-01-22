@@ -1,10 +1,26 @@
-#include "purekit.pb.h"
-#include "HttpClientProtobuf.h"
+    //
+// Created by Oleksandr Fryziuk on 2020-01-15.
+//
+
+#ifndef VIRGIL_PUREKIT_CPP_HTTPPHECLIENT_H
+#define VIRGIL_PUREKIT_CPP_HTTPPHECLIENT_H
+#include <string>
+#include <map>
+#include <purekit.pb.h>
+
 
 class HttpPheClient {
 
-public:
-    build::EnrollmentResponse enrollAcount(build::EnrollmentRequest request);
 
-    HttpClientProtobuf httpClientProtobuf;
+public:
+    HttpPheClient(const std::string &appToken, const std::string &serviceAddress);
+
+public:
+    void enrollAccount(build::EnrollmentRequest enrollmentRequest);
+
+private:
+    std::string appToken;
+    std::string serviceAddress;
 };
+
+#endif //VIRGIL_PUREKIT_CPP_HTTPPHECLIENT_H

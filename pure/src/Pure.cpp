@@ -4,7 +4,7 @@
 
 #include <Pure.h>
 #include "purekit.pb.h"
-#include "HttpClientProtobuf.h"
+#include <HttpPheClient.h>
 #include <fstream>
 #include <nlohmann/json.hpp>
 
@@ -17,16 +17,29 @@ void Pure::registerUser(std::string userID, std::string password) throw() {
     enrollmentRequest.set_version(2);
     readEnvironments();
 
-    HttpClientProtobuf httpClientProtobuf;
-    httpClientProtobuf.fireGet(enrollmentRequest);
+    httpPheClient.enrollAccount(enrollmentRequest);
 
 
 }
 
 void Pure::readEnvironments() {
-    
+
     std::ifstream i("env.json");
     nlohmann::json j;
     i >> j;
     std::cout << j["dev"]["PHE_SERVER_ADDRESS"] << std::endl;
+}
+
+void Pure::computeHash() {
+    int* ptr = (int*)malloc(sizeof(int));
+
+    free(ptr);
+
+    VirgilByteArray array {1, 2 ,3 ,4};
+    pureCrypto.computeHash(array);
+}
+
+Pure::Pure():httpPheClient("AT.AsqUpZfrWZkNFDxahHLzugOBtqkJYF3k",
+        "https://api2-dev.virgilsecurity.com/phe/v1"), pureCrypto() {
+
 }

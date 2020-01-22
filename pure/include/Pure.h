@@ -7,17 +7,22 @@
 
 #include <string>
 #include <HttpPheClient.h>
+#include <PureCrypto.h>
+
 
 class Pure {
 
 public:
-    void registerUser(std::string userID, std::string password) throw();
+    Pure();
 
+    void registerUser(std::string userID, std::string password) throw();
     void readEnvironments();
+    void computeHash();
 
 
 private:
    HttpPheClient httpPheClient;
+   PureCrypto pureCrypto;
 
 };
 
