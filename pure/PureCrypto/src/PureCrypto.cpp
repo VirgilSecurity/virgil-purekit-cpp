@@ -10,6 +10,8 @@
 #include "virgil/crypto/foundation/vscf_private_key.h"
 #include "virgil/crypto/foundation/vscf_public_key.h"
 
+#include "PrivateKeyCWrapper.h"
+
 
 #include "Common.h"
 
@@ -23,6 +25,8 @@ VirgilByteArray PureCrypto::computeHash(VirgilByteArray data) {
     vscf_sha512_hash(vsc_array_wrap, digest);
 
     vsc_buffer_destroy(&digest);
+
+    PrivateKeyCWrapper wrapper;
     return result ;
 }
 

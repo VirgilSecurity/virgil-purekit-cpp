@@ -15,6 +15,7 @@ target_sources(pure
         ${CMAKE_CURRENT_LIST_DIR}/PureCrypto/include/KeyPair.h
         ${CMAKE_CURRENT_LIST_DIR}/PureCrypto/include/PrivateKey.h
         ${CMAKE_CURRENT_LIST_DIR}/PureCrypto/include/PublicKey.h
+        ${CMAKE_CURRENT_LIST_DIR}/PureCrypto/include/PrivateKeyCWrapper.h
 
         ${CMAKE_CURRENT_LIST_DIR}/PureCrypto/include/Common.h
 
@@ -25,6 +26,7 @@ target_sources(pure
         ${CMAKE_CURRENT_LIST_DIR}/PureCrypto/src/KeyPair.cpp
         ${CMAKE_CURRENT_LIST_DIR}/PureCrypto/src/PrivateKey.cpp
         ${CMAKE_CURRENT_LIST_DIR}/PureCrypto/src/PublicKey.cpp
+        ${CMAKE_CURRENT_LIST_DIR}/PureCrypto/src/PrivateKeyCWrapper.cpp
 
         )
 
