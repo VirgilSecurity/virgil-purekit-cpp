@@ -19,6 +19,7 @@ profile
 # CLion
 .idea
 cmake-build-*/
+ext/virgil-crypto-c/
 
 ####
 # Sublime Text 3

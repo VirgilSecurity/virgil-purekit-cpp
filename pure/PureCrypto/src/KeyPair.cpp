@@ -35,6 +35,3 @@
  */
 
 #include <KeyPair.h>
-
-KeyPair::KeyPair(PrivateKey privateKey, PublicKey publicKey)
-        : privateKey_(std::move(privateKey)), publicKey_(std::move(publicKey)) {}

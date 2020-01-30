@@ -37,31 +37,12 @@
 #ifndef VIRGIL_SDK_KEYPAIR_H
 #define VIRGIL_SDK_KEYPAIR_H
 
-#include <PrivateKey.h>
-#include <PublicKey.h>
 
         /*!
          * @brief Wrapper for related Public Key and Private Key.
          */
 class KeyPair {
 public:
-    /*!
-     * @brief Getter.
-     * @return Public Key
-     */
-    const PublicKey& publicKey() const { return publicKey_; }
-
-    /*!
-     * @brief Getter.
-     * @return Private Key
-     */
-    const PrivateKey& privateKey() const { return privateKey_; }
-
-public:
-    KeyPair(PrivateKey privateKey, PublicKey publicKey);
-
-    PrivateKey privateKey_;
-    PublicKey publicKey_;
 };
 
 #endif //VIRGIL_SDK_KEYPAIR_H
