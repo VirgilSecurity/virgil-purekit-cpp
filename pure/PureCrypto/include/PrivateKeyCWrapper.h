@@ -5,10 +5,8 @@
 #ifndef VIRGIL_PUREKIT_CPP_PRIVATEKEYCWRAPPER_H
 #define VIRGIL_PUREKIT_CPP_PRIVATEKEYCWRAPPER_H
 
-#include "virgil/crypto/foundation/vscf_impl.h"
+#include "Utils.h"
 #include <memory>
-
-
 
 class PrivateKeyCWrapper{
 
@@ -19,7 +17,8 @@ private:
     }
 
 public:
-    PrivateKeyCWrapper();
+    PrivateKeyCWrapper(std::unique_ptr<vscf_impl_t, decltype(&destroyPrivateKey)> ptr);
+    vscf_impl_t * getPrivateKey();
 
 private:
     std::unique_ptr<vscf_impl_t, decltype(&destroyPrivateKey)> privateKeyCrypto;

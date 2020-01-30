@@ -12,8 +12,10 @@
 
 #include "PrivateKeyCWrapper.h"
 
+#include "KeyProvider.h"
 
 #include "Common.h"
+#include "Utils.h"
 
 VirgilByteArray PureCrypto::computeHash(VirgilByteArray data) {
     VirgilByteArray result (vscf_sha512_DIGEST_LEN);
@@ -26,11 +28,17 @@ VirgilByteArray PureCrypto::computeHash(VirgilByteArray data) {
 
     vsc_buffer_destroy(&digest);
 
-    PrivateKeyCWrapper wrapper;
+    KeyProvider provider;
+    std::unique_ptr<vscf_impl_t, decltype(&Utils::destroyPrivateKey)> privateKey = provider.generatePrivateKey();
+    std::unique_ptr<vscf_impl_t, decltype(&Utils::destroyPublicKey)> publicKey = provider.extractPublicKey(privateKey.get());
+    //PrivateKeyCWrapper wrapper;
     return result ;
 }
 
 KeyPair PureCrypto::generateKeyPair() {
+
+    std::unique_ptr<vscf_impl_t, decltype(&Utils::destroyPrivateKey)> privateKeyCrypto(Utils::createPrivateKey(), Utils::destroyPrivateKey);
+    PrivateKeyCWrapper prKey (std::move(privateKeyCrypto));
 
     vscf_key_provider_t *key_provider = vscf_key_provider_new();
     vscf_status_t status = vscf_key_provider_setup_defaults(key_provider);

@@ -15,7 +15,4 @@ TEST(PROTOBUF , Dummy) {
     pure.registerUser("alex", "password");
 
     pure.computeHash();
-
-
-
 }
