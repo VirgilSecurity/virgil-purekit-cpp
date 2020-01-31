@@ -10,10 +10,13 @@ target_sources(pure
         PRIVATE
 
         ${CMAKE_CURRENT_LIST_DIR}/include/Pure.h
+
         ${CMAKE_CURRENT_LIST_DIR}/PureCrypto/include/PureCrypto.h
         ${CMAKE_CURRENT_LIST_DIR}/HttpPheClient/include/HttpPheClient.h
         ${CMAKE_CURRENT_LIST_DIR}/PureCrypto/include/KeyPair.h
         ${CMAKE_CURRENT_LIST_DIR}/PureCrypto/include/Utils.h
+        ${CMAKE_CURRENT_LIST_DIR}/PureCrypto/include/VirgilPublicKey.h
+
 
         ${CMAKE_CURRENT_LIST_DIR}/PureCrypto/include/Common.h
 
@@ -26,6 +29,7 @@ target_sources(pure
         ${CMAKE_CURRENT_LIST_DIR}/PureCrypto/src/KeyPair.cpp
         ${CMAKE_CURRENT_LIST_DIR}/PureCrypto/src/KeyProvider.cpp
         ${CMAKE_CURRENT_LIST_DIR}/PureCrypto/src/Utils.cpp
+        ${CMAKE_CURRENT_LIST_DIR}/PureCrypto/src/VirgilPublicKey.cpp
 
         )
 

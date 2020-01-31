@@ -39,7 +39,7 @@ void Pure::computeHash() {
     pureCrypto.computeHash(array);
 
     auto result = pureCrypto.generateKeyPair();
-    int a = 5;
+    //int a = 5;
 }
 
 Pure::Pure():httpPheClient("AT.AsqUpZfrWZkNFDxahHLzugOBtqkJYF3k",

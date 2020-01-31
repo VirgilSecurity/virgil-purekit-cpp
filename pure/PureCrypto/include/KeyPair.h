@@ -36,13 +36,20 @@
 
 #ifndef VIRGIL_SDK_KEYPAIR_H
 #define VIRGIL_SDK_KEYPAIR_H
+#include "KeyProvider.h"
 
-
-        /*!
-         * @brief Wrapper for related Public Key and Private Key.
-         */
+/*!
+ * @brief Wrapper for related Public Key and Private Key.
+ */
 class KeyPair {
 public:
+    KeyPair(std::unique_ptr<vscf_impl_t, decltype(&Utils::destroyPrivateKey)> privKey,
+            std::unique_ptr<vscf_impl_t, decltype(&Utils::destroyPublicKey)> publKey
+            );
+
+
+    std::unique_ptr<vscf_impl_t, decltype(&Utils::destroyPrivateKey)> privateKey;
+    std::unique_ptr<vscf_impl_t, decltype(&Utils::destroyPublicKey)> publicKey;
 };
 
 #endif //VIRGIL_SDK_KEYPAIR_H

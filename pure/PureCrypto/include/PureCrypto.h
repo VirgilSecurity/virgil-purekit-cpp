@@ -17,5 +17,7 @@ public:
     VirgilByteArray computeHash(VirgilByteArray data); // For now just sha512
 
     KeyPair generateKeyPair();
+private:
+    std::vector<unsigned int> computePublicKeyIdentifier(vscf_impl_t* publicKeyIdentifier);
 };
 #endif //VIRGIL_PUREKIT_CPP_PURECRYPTO_H

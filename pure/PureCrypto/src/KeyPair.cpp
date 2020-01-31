@@ -35,3 +35,10 @@
  */
 
 #include <KeyPair.h>
+
+
+KeyPair::KeyPair(std::unique_ptr<vscf_impl_t, decltype(&Utils::destroyPrivateKey)> privKey,
+std::unique_ptr<vscf_impl_t, decltype(&Utils::destroyPublicKey)> publKey):
+publicKey(std::move(publKey)), privateKey(std::move(privKey)) {
+
+}

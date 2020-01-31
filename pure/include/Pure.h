@@ -11,6 +11,8 @@
 
 
 class Pure {
+private:
+    int currentVersion;
 
 public:
     Pure();
