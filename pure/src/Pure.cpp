@@ -2,9 +2,9 @@
 // Created by Oleksandr Fryziuk on 2020-01-13.
 //
 
-#include <Pure.h>
+#include <virgil/purekit/Pure.h>
 #include "purekit.pb.h"
-#include <HttpPheClient.h>
+#include <virgil/purekit/HttpPheClient/HttpPheClient.h>
 #include <fstream>
 #include <nlohmann/json.hpp>
 
@@ -36,9 +36,9 @@ void Pure::computeHash() {
     free(ptr);
 
     VirgilByteArray array {1, 2 ,3 ,4};
-    pureCrypto.computeHash(array);
+    virgilCrypto.computeHash(array);
 
-    auto result = pureCrypto.generateKeyPair();
+    auto result = virgilCrypto.generateKeyPair();
     //int a = 5;
 }
 

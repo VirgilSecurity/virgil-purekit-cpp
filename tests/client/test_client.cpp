@@ -5,7 +5,7 @@
 #include <curlpp/cURLpp.hpp>
 #include <curlpp/Easy.hpp>
 #include <curlpp/Options.hpp>
-#include "Pure.h"
+#include <virgil/purekit/Pure.h>
 
 #include "purekit.pb.h"
 

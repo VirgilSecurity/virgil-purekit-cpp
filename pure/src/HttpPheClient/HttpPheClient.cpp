@@ -1,7 +1,7 @@
 //
 // Created by Oleksandr Fryziuk on 2020-01-15.
 //
-#include <HttpPheClient.h>
+#include <virgil/purekit/HttpPheClient/HttpPheClient.h>
 
 #include <curlpp/cURLpp.hpp>
 #include <curlpp/Easy.hpp>

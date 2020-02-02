@@ -1,0 +1,10 @@
+
+
+#ifndef VIRGIL_PUREKIT_CPP_PHECIPHER_H
+#define VIRGIL_PUREKIT_CPP_PHECIPHER_H
+
+class PheCipher {
+
+};
+
+#endif //VIRGIL_PUREKIT_CPP_PHECIPHER_H

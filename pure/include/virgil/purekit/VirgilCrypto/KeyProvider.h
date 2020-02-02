@@ -1,6 +1,4 @@
-//
-// Created by Oleksandr Fryziuk on 24.01.2020.
-//
+
 
 #ifndef VIRGIL_PUREKIT_CPP_KEYPROVIDER_H
 #define VIRGIL_PUREKIT_CPP_KEYPROVIDER_H

@@ -1,8 +1,4 @@
-//
-// Created by Oleksandr Fryziuk on 24.01.2020.
-//
 
-#include "Utils.h"
 #include "virgil/crypto/foundation/vscf_private_key.h"
 #include "virgil/crypto/foundation/vscf_key_provider.h"
 

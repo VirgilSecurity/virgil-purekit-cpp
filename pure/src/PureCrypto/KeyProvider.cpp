@@ -1,9 +1,9 @@
 
-#include "KeyProvider.h"
-#include "virgil/crypto/foundation/vscf_key_provider.h"
+#include <virgil/purekit/VirgilCrypto/KeyProvider.h>
+#include <virgil/crypto/foundation/vscf_key_provider.h>
 
-#include "virgil/crypto/foundation/vscf_private_key.h"
-#include "Utils.h"
+#include <virgil/crypto/foundation/vscf_private_key.h>
+#include <virgil/purekit/VirgilCrypto/Utils.h>
 
 KeyProvider::KeyProvider(){
     keyProviderCtx = vscf_key_provider_new();

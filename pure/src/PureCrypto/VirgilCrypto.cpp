@@ -1,5 +1,5 @@
 
-#include "PureCrypto.h"
+#include <virgil/purekit/VirgilCrypto/VirgilCrypto.h>
 
 #include <virgil/crypto/foundation/vscf_sha512.h>
 #include <virgil/crypto/foundation/vscf_hash.h>
@@ -11,13 +11,13 @@
 #include <virgil/crypto/common/private/vsc_buffer_defs.h>
 
 
-#include "KeyProvider.h"
+#include <virgil/purekit/VirgilCrypto/KeyProvider.h>
 
 
-#include "Common.h"
-#include "Utils.h"
+#include <virgil/purekit/VirgilCrypto/Common.h>
+#include <virgil/purekit/VirgilCrypto/Utils.h>
 
-VirgilByteArray PureCrypto::computeHash(VirgilByteArray data) {
+VirgilByteArray VirgilCrypto::computeHash(VirgilByteArray data) {
     VirgilByteArray result (vscf_sha512_DIGEST_LEN);
 
     vsc_buffer_t digest;
@@ -30,7 +30,7 @@ VirgilByteArray PureCrypto::computeHash(VirgilByteArray data) {
     return result ;
 }
 
-KeyPair PureCrypto::generateKeyPair() {
+KeyPair VirgilCrypto::generateKeyPair() {
     KeyProvider provider;
     std::unique_ptr<vscf_impl_t, decltype(&Utils::destroyPrivateKey)> privateKey = provider.generatePrivateKey();
     std::unique_ptr<vscf_impl_t, decltype(&Utils::destroyPublicKey)> publicKey = provider.extractPublicKey(privateKey.get());
@@ -38,11 +38,12 @@ KeyPair PureCrypto::generateKeyPair() {
     return keyPair;
 }
 
-std::vector<unsigned int> PureCrypto::computePublicKeyIdentifier(vscf_impl_t* publicKeyIdentifier) {
+std::vector<unsigned int>VirgilCrypto::computePublicKeyIdentifier(vscf_impl_t* publicKeyIdentifier) {
     vscf_key_asn1_serializer_t* keyAsn1Serializer = vscf_key_asn1_serializer_new();
     vscf_key_asn1_serializer_setup_defaults(keyAsn1Serializer);
 
-    vscf_ke
+    std::vector<unsigned int> vec;
+    return vec;
 }
 
 

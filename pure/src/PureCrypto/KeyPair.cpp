@@ -34,7 +34,7 @@
  * Lead Maintainer: Virgil Security Inc. <support@virgilsecurity.com>
  */
 
-#include <KeyPair.h>
+#include <virgil/purekit/VirgilCrypto/KeyPair.h>
 
 
 KeyPair::KeyPair(std::unique_ptr<vscf_impl_t, decltype(&Utils::destroyPrivateKey)> privKey,

@@ -1,9 +1,6 @@
-//
-// Created by Oleksandr Fryziuk on 2020-01-13.
-//
 
-#ifndef VIRGIL_PUREKIT_CPP_PURECRYPTO_H
-#define VIRGIL_PUREKIT_CPP_PURECRYPTO_H
+#ifndef VIRGIL_PUREKIT_CPP_VIRGILCRYPTO_H
+#define VIRGIL_PUREKIT_CPP_VIRGILCRYPTO_H
 
 #include <vector>
 #include "Common.h"
@@ -11,7 +8,7 @@
 
 
 
-class PureCrypto {
+class VirgilCrypto {
 public:
 
     VirgilByteArray computeHash(VirgilByteArray data); // For now just sha512
@@ -20,4 +17,4 @@ public:
 private:
     std::vector<unsigned int> computePublicKeyIdentifier(vscf_impl_t* publicKeyIdentifier);
 };
-#endif //VIRGIL_PUREKIT_CPP_PURECRYPTO_H
+#endif //VIRGIL_PUREKIT_CPP_VIRGILCRYPTO_H

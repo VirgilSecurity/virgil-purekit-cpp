@@ -1,6 +1,4 @@
-    //
-// Created by Oleksandr Fryziuk on 2020-01-15.
-//
+
 
 #ifndef VIRGIL_PUREKIT_CPP_HTTPPHECLIENT_H
 #define VIRGIL_PUREKIT_CPP_HTTPPHECLIENT_H
