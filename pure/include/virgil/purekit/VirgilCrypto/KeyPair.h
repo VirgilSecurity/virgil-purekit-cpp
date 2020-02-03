@@ -37,6 +37,7 @@
 #ifndef VIRGIL_SDK_KEYPAIR_H
 #define VIRGIL_SDK_KEYPAIR_H
 #include "KeyProvider.h"
+#include <virgil/purekit/VirgilCrypto/VirgilPublicKey.h>
 
 /*!
  * @brief Wrapper for related Public Key and Private Key.
@@ -50,6 +51,7 @@ public:
 
     std::unique_ptr<vscf_impl_t, decltype(&Utils::destroyPrivateKey)> privateKey;
     std::unique_ptr<vscf_impl_t, decltype(&Utils::destroyPublicKey)> publicKey;
+    std::unique_ptr<VirgilPublicKey> virgilPublicKey;
 };
 
 #endif //VIRGIL_SDK_KEYPAIR_H

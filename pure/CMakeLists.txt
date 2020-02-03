@@ -12,6 +12,10 @@ target_sources(pure
         ${CMAKE_CURRENT_LIST_DIR}/include/virgil/purekit/Pure.h
         ${CMAKE_CURRENT_LIST_DIR}/include/virgil/purekit/KmsManager.h
         ${CMAKE_CURRENT_LIST_DIR}/include/virgil/purekit/PheManager.h
+        ${CMAKE_CURRENT_LIST_DIR}/include/virgil/purekit/PureContext.h
+
+        ${CMAKE_CURRENT_LIST_DIR}/include/virgil/purekit/exceptions/NotImplementedException.h
+
         ${CMAKE_CURRENT_LIST_DIR}/include/virgil/purekit/VirgilCrypto/VirgilCrypto.h
 
         ${CMAKE_CURRENT_LIST_DIR}/include/virgil/purekit/PureCrypto/PureCrypto.h
@@ -34,6 +38,8 @@ target_sources(pure
         ${CMAKE_CURRENT_LIST_DIR}/src/PureCrypto/KeyProvider.cpp
         ${CMAKE_CURRENT_LIST_DIR}/src/PureCrypto/Utils.cpp
         ${CMAKE_CURRENT_LIST_DIR}/src/PureCrypto/VirgilPublicKey.cpp
+
+        ${CMAKE_CURRENT_LIST_DIR}/src/PureContext.cpp
         )
 
 target_include_directories(pure

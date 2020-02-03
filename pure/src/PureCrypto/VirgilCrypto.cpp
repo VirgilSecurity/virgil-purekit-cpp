@@ -34,6 +34,8 @@ KeyPair VirgilCrypto::generateKeyPair() {
     KeyProvider provider;
     std::unique_ptr<vscf_impl_t, decltype(&Utils::destroyPrivateKey)> privateKey = provider.generatePrivateKey();
     std::unique_ptr<vscf_impl_t, decltype(&Utils::destroyPublicKey)> publicKey = provider.extractPublicKey(privateKey.get());
+    std::vector<unsigned int> array;
+    VirgilPublicKey virgilPublicKey (std::move(publicKey), array);
     KeyPair keyPair(std::move(privateKey), std::move(publicKey));
     return keyPair;
 }

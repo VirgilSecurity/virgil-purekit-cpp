@@ -1,0 +1,12 @@
+//
+// Created by Oleksandr Fryziuk on 03.02.2020.
+//
+
+#ifndef VIRGIL_PUREKIT_CPP_NONROTATABLESECRETS_H
+#define VIRGIL_PUREKIT_CPP_NONROTATABLESECRETS_H
+
+class NonrotatableSecrets {
+
+};
+
+#endif //VIRGIL_PUREKIT_CPP_NONROTATABLESECRETS_H

@@ -30,93 +30,93 @@ class Pure {
 private:
     // TODO thing about smartPointer class members
 
-    int currentVersion;
-    VirgilCrypto virgilCrypto;
-    PureCrypto pureCrypto;
-    PheCipher cipher;
-    PureStorage storage;
-    VirgilByteArray ak;
-    //VirgilPublicKey buppk;
-    VirgilKeyPair oskp;
-
-    //std::map<std::string, std::vector<VirgilPublicKey>> externalPublicKeys;
-
-    PheManager pheManager;
-    KmsManger kmsManger;
+//    int currentVersion;
+        VirgilCrypto virgilCrypto;
+        PureCrypto pureCrypto;
+//    PheCipher cipher;
+//    PureStorage storage;
+//    VirgilByteArray ak;
+//    //VirgilPublicKey buppk;
+//    VirgilKeyPair oskp;
+//
+//    //std::map<std::string, std::vector<VirgilPublicKey>> externalPublicKeys;
+//
+//    PheManager pheManager;
+//    KmsManger kmsManger;
 
 public:
     Pure();
 
-    void registerUser(std::string userID, std::string password) throw();
-    AuthResult authenticateUser(const std::string& userId,const std::string& password,const std::string& sessionId) throw();
+    void registerUser(std::string userID, std::string password);
+    AuthResult authenticateUser(const std::string& userId,const std::string& password,const std::string& sessionId);
 
-    AuthResult authenticateUser(const std::string& userId, const std::string& password) throw();
+    AuthResult authenticateUser(const std::string& userId, const std::string& password);
 
-    PureGrant createUserGrantAsAdmin(const std::string& userId, const VirgilPrivateKey& bupsk) throw();
+    PureGrant createUserGrantAsAdmin(const std::string& userId, const VirgilPrivateKey& bupsk);
 
-    PureGrant decryptGrantFromUser(const std::string& encryptedGrantString) throw();
+    PureGrant decryptGrantFromUser(const std::string& encryptedGrantString);
 
-    void changeUserPassword(const std::string& userId, const std::string& oldPassword, const std::string& newPassword) throw();
+    void changeUserPassword(const std::string& userId, const std::string& oldPassword, const std::string& newPassword);
 
-    void changeUserPassword(const PureGrant& grant, const std::string& newPassword) throw();
+    void changeUserPassword(const PureGrant& grant, const std::string& newPassword);
 
-    void recoverUser(const std::string& userId, const std::string& newPassword) throw();
+    void recoverUser(const std::string& userId, const std::string& newPassword);
 
-    void resetUserPassword(const std::string& userId, const std::string& newPassword) throw();
+    void resetUserPassword(const std::string& userId, const std::string& newPassword);
 
-    void deleteUser(const std::string& userId, bool cascade) throw();
+    void deleteUser(const std::string& userId, bool cascade);
 
-    long performRotation() throw();
+    long performRotation();
 
-    VirgilByteArray encrypt(const std::string& userId, const std::string& dataId, const VirgilByteArray& plainText) throw();
+    VirgilByteArray encrypt(const std::string& userId, const std::string& dataId, const VirgilByteArray& plainText);
 
     VirgilByteArray encrypt(const std::string& userId,
         const std::string& dataId,
         const std::set<std::string>& otherUserIds,
         const std::set<std::string>& roleNames,
         const std::vector<VirgilPublicKey>& publicKeys,
-        const VirgilByteArray& plainText) throw();
+        const VirgilByteArray& plainText);
 
-    VirgilByteArray decrypt(const PureGrant& grant, const std::string& ownerUserId, const std::string& dataId, const VirgilByteArray& cipherText) throw();
+    VirgilByteArray decrypt(const PureGrant& grant, const std::string& ownerUserId, const std::string& dataId, const VirgilByteArray& cipherText);
 
     VirgilByteArray decrypt(const VirgilPrivateKey& privateKey,
         const std::string& ownerUserId,
         const std::string& dataId,
         const VirgilByteArray& cipherText);
 
-    void share(const PureGrant& grant, const std::string& dataId, const std::string& otherUserId) throw();
+    void share(const PureGrant& grant, const std::string& dataId, const std::string& otherUserId);
 
     void share(const PureGrant& grant,
                   const std::string& dataId,
                   const std::set<std::string>& otherUserIds,
-                  const std::vector<VirgilPublicKey>& publicKeys) throw();
+                  const std::vector<VirgilPublicKey>& publicKeys);
 
-    void unshare(const std::string& ownerUserId, const std::string& dataId, const std::string& otherUserId) throw();
+    void unshare(const std::string& ownerUserId, const std::string& dataId, const std::string& otherUserId);
 
     void unshare(std::string ownerUserId,
                     std::string dataId,
                     std::set<std::string> otherUserIds,
                     std::vector<VirgilPublicKey> publicKeys);
 
-    void deleteKey(const std::string& userId, const std::string& dataId) throw();
+    void deleteKey(const std::string& userId, const std::string& dataId);
 
-    void createRole(const std::string& roleName, const std::set<std::string>& userIds) throw();
+    void createRole(const std::string& roleName, const std::set<std::string>& userIds);
 
-    void assignRole(const std::string& roleToAssign, const PureGrant& grant,const std::set<std::string>& userIds) throw();
+    void assignRole(const std::string& roleToAssign, const PureGrant& grant,const std::set<std::string>& userIds);
 
-    void assignRole(const std::string& roleName, const VirgilByteArray& publicKeyId, const VirgilByteArray& rskData, const std::set<std::string>& userIds) throw();
+    void assignRole(const std::string& roleName, const VirgilByteArray& publicKeyId, const VirgilByteArray& rskData, const std::set<std::string>& userIds);
 
 
-    void unassignRole(const std::string& roleName, const std::set<std::string>& userIds) throw();
+    void unassignRole(const std::string& roleName, const std::set<std::string>& userIds);
 
-    void registerUser(const std::string& userId, const std::string& password, bool isUserNew) throw();
+    void registerUser(const std::string& userId, const std::string& password, bool isUserNew);
 
     void changeUserPassword(const UserRecord& userRecord,
                                 const VirgilByteArray& privateKeyData,
                                 const std::string& newPassword);
 
     std::vector<VirgilPublicKey> keysWithOthers(const std::vector<VirgilPublicKey>& publicKeys,
-                                                  const std::set<std::string>& otherUserIds) throw();
+                                                  const std::set<std::string>& otherUserIds);
 
     int getCurrentVersion();
 
@@ -130,11 +130,11 @@ public:
 
     VirgilKeyPair getOskp();
 
-    std::map<std::string, std::vector<VirgilPublicKey>> getExternalPublicKeys() throw();
+    std::map<std::string, std::vector<VirgilPublicKey>> getExternalPublicKeys();
 
 
 
-    //my staff
+    //my staff delete
     void readEnvironments();
     void computeHash();
 
