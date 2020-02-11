@@ -91,7 +91,7 @@ VirgilCrypto PureContext::getCrypto() {
     throw NotImplementedException();
 }
 
-NonrotatableSecrets getNonrotatableSecrets() {
+NonRotatableSecrets getNonrotatableSecrets() {
     throw NotImplementedException();
 }
 

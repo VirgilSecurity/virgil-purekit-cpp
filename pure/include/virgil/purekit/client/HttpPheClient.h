@@ -16,6 +16,8 @@ public:
 public:
     void enrollAccount(build::EnrollmentRequest enrollmentRequest);
 
+    build::VerifyPasswordResponse verifyPassword( build::VerifyPasswordRequest);
+
 private:
     std::string appToken;
     std::string serviceAddress;

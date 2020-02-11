@@ -2,7 +2,7 @@
 #ifndef VIRGIL_PUREKIT_CPP_PURECONTEXT_H
 #define VIRGIL_PUREKIT_CPP_PURECONTEXT_H
 
-#include <virgil/purekit/HttpPheClient/HttpPheClient.h>
+#include <virgil/purekit/client/HttpPheClient.h>
 #include <virgil/purekit/PureCrypto/PureCrypto.h>
 #include <virgil/purekit/VirgilCrypto/VirgilCrypto.h>
 #include <virgil/purekit/VirgilCrypto/PheCipher.h>
@@ -18,7 +18,7 @@
 
 #include <virgil/purekit/model/PureGrant.h>
 #include <virgil/purekit/model/UserRecord.h>
-#include <virgil/purekit/NonrotatableSecrets.h>
+#include <virgil/purekit/NonRotatableSecrets.h>
 #include <virgil/purekit/HttpKmsClient.h>
 
 #include <string>
@@ -47,11 +47,11 @@ private:
 //    VirgilPublicKey buppk;
 //    Credentials secretKey;
 //    Credentials publicKey;
-//    NonrotatableSecrets nonrotatableSecrets;
+//    NonRotatableSecrets nonrotatableSecrets;
 //    PureStorage storage;
-//    HttpPheClient pheClient;
+//    client pheClient;
 //    PureStorage storage;
-//    HttpPheClient pheClient;
+//    client pheClient;
 //
 //    HttpKmsClient kmsClient;
 //    Credentials updateToken;
@@ -131,7 +131,7 @@ public:
 
     VirgilCrypto getCrypto();
 
-    NonrotatableSecrets getNonrotatableSecrets();
+    NonRotatableSecrets getNonrotatableSecrets();
 
 
 

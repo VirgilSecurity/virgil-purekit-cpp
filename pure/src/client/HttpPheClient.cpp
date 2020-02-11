@@ -1,7 +1,8 @@
 //
 // Created by Oleksandr Fryziuk on 2020-01-15.
 //
-#include <virgil/purekit/HttpPheClient/HttpPheClient.h>
+#include <virgil/purekit/client/HttpPheClient.h>
+#include <virgil/purekit/exceptions/NotImplementedException.h>
 
 #include <curlpp/cURLpp.hpp>
 #include <curlpp/Easy.hpp>
@@ -11,6 +12,7 @@
 #include <purekit.pb.h>
 #include <sstream>
 #include <fstream>
+
 
 #include <google/protobuf/util/json_util.h>
 static std::string ProtoToJson(const google::protobuf::Message& proto)
@@ -80,7 +82,10 @@ void HttpPheClient::enrollAccount(build::EnrollmentRequest enrollmentRequest) {
     catch ( curlpp::RuntimeError & e ) {
         std::cout << e.what() << std::endl;
     }
+}
 
+build::VerifyPasswordResponse HttpPheClient::verifyPassword( build::VerifyPasswordRequest) {
+    throw NotImplementedException();
 }
 
 

@@ -4,7 +4,7 @@
 
 #include <virgil/purekit/Pure.h>
 #include "purekit.pb.h"
-#include <virgil/purekit/HttpPheClient/HttpPheClient.h>
+#include <virgil/purekit/client/HttpPheClient.h>
 #include <fstream>
 #include <nlohmann/json.hpp>
 #include <virgil/purekit/exceptions/NotImplementedException.h>

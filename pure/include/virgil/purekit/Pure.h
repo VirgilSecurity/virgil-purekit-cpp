@@ -5,7 +5,7 @@
 #ifndef VIRGIL_PUREKIT_CPP_PURE_H
 #define VIRGIL_PUREKIT_CPP_PURE_H
 
-#include <virgil/purekit/HttpPheClient/HttpPheClient.h>
+#include <virgil/purekit/client/HttpPheClient.h>
 #include <virgil/purekit/PureCrypto/PureCrypto.h>
 #include <virgil/purekit/VirgilCrypto/VirgilCrypto.h>
 #include <virgil/purekit/VirgilCrypto/PheCipher.h>
