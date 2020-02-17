@@ -9,16 +9,19 @@
 #include <nlohmann/json.hpp>
 #include <virgil/purekit/exceptions/NotImplementedException.h>
 
-
+Pure::Pure(const PureContext& context) {
+    throw NotImplementedException();
+}
 
 void Pure::registerUser(std::string userID, std::string password) {
-    using namespace build;
-
-    EnrollmentRequest enrollmentRequest;
-    enrollmentRequest.set_version(2);
-    readEnvironments();
-
-    httpPheClient.enrollAccount(enrollmentRequest);
+//    using namespace build;
+//
+//    EnrollmentRequest enrollmentRequest;
+//    enrollmentRequest.set_version(2);
+//    readEnvironments();
+//
+//    httpPheClient.enrollAccount(enrollmentRequest);
+    throw NotImplementedException();
 }
 
 void Pure::readEnvironments() {
@@ -41,10 +44,10 @@ void Pure::computeHash() {
     //int a = 5;
 }
 
-Pure::Pure():httpPheClient("AT.AsqUpZfrWZkNFDxahHLzugOBtqkJYF3k",
-        "https://api2-dev.virgilsecurity.com/phe/v1"), pureCrypto() {
-
-}
+//Pure::Pure():httpPheClient("AT.AsqUpZfrWZkNFDxahHLzugOBtqkJYF3k",
+//        "https://api2-dev.virgilsecurity.com/phe/v1"), pureCrypto() {
+//
+//}
 
 
 AuthResult Pure::authenticateUser(const std::string& userId,const std::string& password,const std::string& sessionId) {

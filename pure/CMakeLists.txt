@@ -47,6 +47,11 @@ target_sources(pure
         ${CMAKE_CURRENT_LIST_DIR}/include/virgil/purekit/model/GrantKey.h
         ${CMAKE_CURRENT_LIST_DIR}/include/virgil/purekit/model/Role.h
         ${CMAKE_CURRENT_LIST_DIR}/include/virgil/purekit/model/RoleAssignment.h
+        ${CMAKE_CURRENT_LIST_DIR}/include/virgil/purekit/UoKmsClient.h
+        ${CMAKE_CURRENT_LIST_DIR}/include/virgil/purekit/VirgilCrypto/VirgilBase64.h
+
+        ${CMAKE_CURRENT_LIST_DIR}/include/virgil/purekit/storage/PureStorage.h
+        ${CMAKE_CURRENT_LIST_DIR}/include/virgil/purekit/storage/RamPureStorage.h
 
         ${CMAKE_CURRENT_LIST_DIR}/src/PureCrypto/PureCrypto.cpp
 
@@ -74,6 +79,9 @@ target_sources(pure
         ${CMAKE_CURRENT_LIST_DIR}/src/model/GrantKey.cpp
         ${CMAKE_CURRENT_LIST_DIR}/src/model/Role.cpp
         ${CMAKE_CURRENT_LIST_DIR}/src/model/RoleAssignment.cpp
+        ${CMAKE_CURRENT_LIST_DIR}/src/KmsManager.cpp;
+        ${CMAKE_CURRENT_LIST_DIR}/src/VirgilCrypto/VirgilBase64.cpp
+        ${CMAKE_CURRENT_LIST_DIR}/src/VirgilCrypto/VirgilKeyPair.cpp
 
         )
 

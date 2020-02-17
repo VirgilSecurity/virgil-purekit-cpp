@@ -24,6 +24,7 @@
 
 #include <string>
 #include <map>
+#include "PureContext.h"
 
 
 class Pure {
@@ -139,8 +140,10 @@ public:
     void computeHash();
 
 
+    Pure(const PureContext& context);
+
 private:
-   HttpPheClient httpPheClient;
+   //HttpPheClient httpPheClient;
 };
 
 #endif //VIRGIL_PUREKIT_CPP_PURE_H

@@ -5,7 +5,7 @@
 #include <vector>
 #include "Common.h"
 #include "KeyPair.h"
-
+#include "VirgilKeyPair.h"
 
 
 class VirgilCrypto {
@@ -13,7 +13,11 @@ public:
 
     VirgilByteArray computeHash(VirgilByteArray data); // For now just sha512
 
-    KeyPair generateKeyPair();
+    VirgilByteArray generateRandomData(size_t size);
+
+    VirgilKeyPair generateKeyPair();
+
+    VirgilByteArray exportPublicKey(const VirgilPublicKey& key);
 private:
     std::vector<unsigned int> computePublicKeyIdentifier(vscf_impl_t* publicKeyIdentifier);
 };

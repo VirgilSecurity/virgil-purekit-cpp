@@ -105,6 +105,16 @@ public:
                                      const std::string& pheServiceAddress,
                                      const std::string& kmsServiceAddress);
 
+    static PureContext createContext(const std::string& at,
+                                        const std::string& nm,
+                                        const std::string& bu,
+                                        const std::string& sk,
+                                        const std::string& pk,
+                                        const PureStorage& storage,
+                                        const std::map<std::string, std::vector<std::string>>& externalPublicKeys,
+                                        const std::string& pheServiceAddress,
+                                        const std::string& kmsServiceAddress);
+
     static Credentials parseCredentials(const std::string& prefix,
                                         const std::string& credentials,
                                         bool isVersioned,
@@ -114,7 +124,7 @@ public:
 
     Credentials getUpdateToken();
 
-    void setUpdateToken(std::string updateToken);
+    void setUpdateToken(const std::string& updateToken);
 
     void setStorage(PureStorage storage);
 

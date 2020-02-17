@@ -44,6 +44,18 @@ PureContext PureContext::createContext(const std::string& appToken,
     throw NotImplementedException();
 }
 
+static PureContext createContext(const std::string& at,
+                                 const std::string& nm,
+                                 const std::string& bu,
+                                 const std::string& sk,
+                                 const std::string& pk,
+                                 const PureStorage& storage,
+                                 const std::map<std::string, std::vector<std::string>>& externalPublicKeys,
+                                 const std::string& pheServiceAddress,
+                                 const std::string& kmsServiceAddress) {
+    throw NotImplementedException();
+}
+
 PureContext::Credentials PureContext::parseCredentials(const std::string& prefix,
                                     const std::string& credentials,
                                     bool isVersioned,
@@ -59,7 +71,7 @@ PureContext::Credentials PureContext::getUpdateToken() {
     throw NotImplementedException();
 }
 
-void PureContext::setUpdateToken(std::string updateToken) {
+void PureContext::setUpdateToken(const std::string& updateToken) {
     throw NotImplementedException();
 }
 

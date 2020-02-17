@@ -5,4 +5,5 @@
 
 typedef std::vector<unsigned char> VirgilByteArray;
 
+
 #endif //VIRGIL_PUREKIT_CPP_COMMON_H

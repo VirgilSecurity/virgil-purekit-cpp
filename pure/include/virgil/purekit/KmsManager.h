@@ -5,6 +5,17 @@
 #ifndef VIRGIL_PUREKIT_CPP_KMSMANAGER_H
 #define VIRGIL_PUREKIT_CPP_KMSMANAGER_H
 
-class KmsManger {};
+#include <virgil/purekit/VirgilCrypto/Common.h>
+#include <virgil/purekit/model/UserRecord.h>
+
+class KmsManger {
+private:
+    //UoKmsClient getKmsClient(int kms version);
+
+    VirgilByteArray recoverSecret(const UserRecord& userRecord);
+    VirgilByteArray performRotation(const VirgilByteArray& wrap);
+
+
+};
 
 #endif //VIRGIL_PUREKIT_CPP_KMSMANAGER_H

@@ -16,6 +16,8 @@
 
 #include <virgil/purekit/VirgilCrypto/Common.h>
 #include <virgil/purekit/VirgilCrypto/Utils.h>
+#include <virgil/purekit/VirgilCrypto/VirgilKeyPair.h>
+#include <virgil/purekit/exceptions/NotImplementedException.h>
 
 VirgilByteArray VirgilCrypto::computeHash(VirgilByteArray data) {
     VirgilByteArray result (vscf_sha512_DIGEST_LEN);
@@ -30,14 +32,17 @@ VirgilByteArray VirgilCrypto::computeHash(VirgilByteArray data) {
     return result ;
 }
 
-KeyPair VirgilCrypto::generateKeyPair() {
+VirgilKeyPair VirgilCrypto::generateKeyPair() {
     KeyProvider provider;
     std::unique_ptr<vscf_impl_t, decltype(&Utils::destroyPrivateKey)> privateKey = provider.generatePrivateKey();
     std::unique_ptr<vscf_impl_t, decltype(&Utils::destroyPublicKey)> publicKey = provider.extractPublicKey(privateKey.get());
     std::vector<unsigned int> array;
     VirgilPublicKey virgilPublicKey (std::move(publicKey), array);
     KeyPair keyPair(std::move(privateKey), std::move(publicKey));
-    return keyPair;
+
+    VirgilKeyPair vkp;
+    throw NotImplementedException();
+    return vkp;
 }
 
 std::vector<unsigned int>VirgilCrypto::computePublicKeyIdentifier(vscf_impl_t* publicKeyIdentifier) {
@@ -46,6 +51,14 @@ std::vector<unsigned int>VirgilCrypto::computePublicKeyIdentifier(vscf_impl_t* p
 
     std::vector<unsigned int> vec;
     return vec;
+}
+
+VirgilByteArray VirgilCrypto::generateRandomData(size_t size) {
+    throw NotImplementedException();
+}
+
+VirgilByteArray VirgilCrypto::exportPublicKey(const VirgilPublicKey& key) {
+    throw NotImplementedException();
 }
 
 
