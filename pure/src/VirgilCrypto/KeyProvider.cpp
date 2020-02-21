@@ -33,8 +33,5 @@ KeyProvider::extractPublicKey(vscf_impl_t* privateKey) {
     vscf_error_t error;
     vscf_impl_t *publicKey = vscf_private_key_extract_public_key(privateKey);
     std::unique_ptr<vscf_impl_t, decltype(&Utils::destroyPublicKey)> publicKeyPtr(publicKey, Utils::destroyPublicKey);
-
-
-
     return std::move(publicKeyPtr);
 }

@@ -40,7 +40,7 @@ void Pure::computeHash() {
     VirgilByteArray array {1, 2 ,3 ,4};
     virgilCrypto.computeHash(array);
 
-    auto result = virgilCrypto.generateKeyPair();
+    auto result = virgilCrypto.generateKeyPair(KeyPairType::ED25519);
     //int a = 5;
 }
 

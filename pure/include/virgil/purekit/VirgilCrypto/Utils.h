@@ -3,6 +3,7 @@
 #define VIRGIL_PUREKIT_CPP_UTILS_H
 #include "virgil/crypto/foundation/vscf_impl.h"
 #include "virgil/crypto/foundation/vscf_key_provider.h"
+#include <virgil/purekit/VirgilCrypto/Common.h>
 #include <string>
 #include <cstdlib>
 
@@ -16,6 +17,8 @@ namespace Utils {
 
 
     std::string generateUUID();
+
+    VirgilByteArray generateData(size_t size);
 }
 
 #endif //VIRGIL_PUREKIT_CPP_UTILS_H

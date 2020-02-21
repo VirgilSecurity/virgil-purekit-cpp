@@ -35,31 +35,19 @@ public:
 
     };
 
-    PureSetupResult setupPure(const std::string& pheServerAddress,
-                                const std::string& pureServerAddress,
-                                const std::string& kmsServerAddress,
-                                const std::string& appToken,
-                                const std::string& publicKey,
-                                const std::string& secretKey,
-                                const std::map<std::string, std::vector<std::string>>& externalPublicKeys,
-                                StorageType storageType) {
-        throw NotImplementedException();
+    PureSetupResult setupPure(VirgilByteArray nms,
+                              std::string pheServerAddress,
+                              std::string pureServerAddress,
+                              std::string kmsServerAddress,
+                              std::string appToken,
+                              std::string publicKey,
+                              std::string secretKey,
+                              std::string updateToken,
+                              std::map<std::string, std::vector<std::string>> externalPublicKeys,
+                              StorageType storageType,
+                              bool skipClean) {
 
-    }
-
-    PureSetupResult setupPure(VirgilByteArray& nms,
-                                  const std::string& pheServerAddress,
-                                  const std::string& pureServerAddress,
-                                  const std::string& kmsServerAddress,
-                                  const std::string& appToken,
-                                  const std::string& publicKey,
-                                  const std::string& secretKey,
-                                  const std::string& updateToken,
-                                  const std::map<std::string, std::vector<std::string>>& externalPublicKeys,
-                                  StorageType storageType,
-                                  bool skipClean) {
-
-        VirgilKeyPair keyPair = this->crypto.generateKeyPair();
+        VirgilKeyPair keyPair = this->crypto.generateKeyPair(KeyPairType::ED25519);
 
         nmsData = nms;
 
@@ -79,8 +67,8 @@ public:
         switch (storageType) {
             case RAM:
                 context = PureContext::createContext(appToken, nmsString, bupkpString,
-                                      secretKey, publicKey, ramPureStorage, externalPublicKeys,
-                                      pheServerAddress, kmsServerAddress);
+                                                     secretKey, publicKey, ramPureStorage, externalPublicKeys,
+                                                     pheServerAddress, kmsServerAddress);
                 break;
             case VirgilCloud:
                 context = PureContext::createContext(appToken, nmsString, bupkpString,
@@ -100,6 +88,41 @@ public:
 
         throw NotImplementedException();
     }
+
+    PureSetupResult setupPure() {
+        throw NotImplementedException();
+    }
+
+    PureSetupResult setupPure( std::string pheServerAddress,
+                                std::string pureServerAddress,
+                                std::string kmsServerAddress,
+                                std::string appToken,
+                                std::string publicKey,
+                                std::string secretKey,
+                                std::map<std::string, std::vector<std::string>> externalPublicKeys,
+                                StorageType storageType) {
+        VirgilByteArray nms;
+
+        std::string utoken;
+        //throw NotImplementedException();
+
+
+        return setupPure(nms,
+                pheServerAddress,
+                pureServerAddress,
+                kmsServerAddress,
+                appToken,
+                publicKey,
+                secretKey,
+        utoken,
+        externalPublicKeys,
+        storageType,
+        false);
+
+
+    }
+
+
 
     static std::vector<StorageType> createStorages() {
         std::vector<StorageType> storages;
@@ -131,13 +154,13 @@ public:
     void TearDown() override {}
 
 protected:
-    std::string pheServerAddress = "";
-    std::string pureServerAddress = "";
-    std::string kmsServerAddress = "";
-    std::string appToken = "";
-    std::string publicKey = "";
-    std::string secretKey = "";
-
+    std::string pheServerAddress = "https://api-dev.virgilsecurity.com/phe/v1";
+    std::string pureServerAddress = "https://api-dev.virgilsecurity.com/pure/v1";
+    std::string kmsServerAddress = "https://api-dev.virgilsecurity.com/kms/v1";
+    std::string appToken = "AT.znqRZcOdzybj62Rzer897pX2DZ9KZoYF";
+    std::string publicKey = "PK.2.BCIeyCW9xDfbuYQb6CIJ7dMqujrjBlIysJs6dXxV+9FU9kxC60fD1dl/P/6TT2wJN8p9E16IPNt5OdJ6Tq3S6L0=.BGjcd5b4wzuGapBQXcUxVXnHWvscYMDbTWk1zxqejSruppcoVWzeYlF0z7GTT3HUdejdrFtbL6sRxD/wOu5jYAs=";
+    std::string secretKey = "SK.2.3JE4SAOXGC95nDOjOhCyTXZqdQmjaqz9mtZhIN9s/2g=.cFGlNRis9FQ77DW2fCpBcx+EI4SHv7guS1sPCnSRmx0=.rKEuUZePvcr6CdOTJkk0kd0kUAq1rSx0x2A9lUegQHo=";
+    std::string updateToken = "";
 };
 
 TEST_F(PureTest, registration__new_user__should_succeed) {
@@ -153,11 +176,30 @@ TEST_F(PureTest, registration__new_user__should_succeed) {
 
         pure.registerUser(userId, password);
     }
-    throw NotImplementedException();
 }
 
 TEST_F(PureTest, authentication__new_user__should_succeed) {
-    throw NotImplementedException();
+    auto storages = createStorages();
+    for (StorageType storage: storages) {
+        std::map<std::string, std::vector<std::string>> externalPublicKeys;
+        PureSetupResult pureResult = this->setupPure(pheServerAddress, pureServerAddress, kmsServerAddress, appToken, publicKey, secretKey, externalPublicKeys, storage);
+        Pure pure = Pure(pureResult.getContext());
+
+        std::string userId = Utils::generateUUID();
+        std::string password = Utils::generateUUID();
+        std::string dataId = Utils::generateUUID();
+        VirgilByteArray text = Utils::generateData(32);
+
+        pure.registerUser(userId, password);
+
+        AuthResult authResult = pure.authenticateUser(userId, password);
+
+        VirgilByteArray cipherText = pure.encrypt(userId, dataId, text);
+
+        VirgilByteArray plainText = pure.decrypt(authResult.getGrant(), "", dataId, cipherText);
+
+        EXPECT_EQ(cipherText, plainText);
+    }
 }
 
 TEST_F(PureTest, encryption__random_data__should_match) {

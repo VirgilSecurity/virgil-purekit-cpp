@@ -6,7 +6,8 @@
 #include <string>
 
 class AuthResult {
-    PureGrant getGrand();
+public:
+    PureGrant getGrant();
     std::string getEncryptedGrant();
 
 };

@@ -32,7 +32,7 @@ VirgilByteArray VirgilCrypto::computeHash(VirgilByteArray data) {
     return result ;
 }
 
-VirgilKeyPair VirgilCrypto::generateKeyPair() {
+VirgilKeyPair VirgilCrypto::generateKeyPair(KeyPairType type) {
     KeyProvider provider;
     std::unique_ptr<vscf_impl_t, decltype(&Utils::destroyPrivateKey)> privateKey = provider.generatePrivateKey();
     std::unique_ptr<vscf_impl_t, decltype(&Utils::destroyPublicKey)> publicKey = provider.extractPublicKey(privateKey.get());

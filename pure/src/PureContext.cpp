@@ -103,6 +103,14 @@ VirgilCrypto PureContext::getCrypto() {
     throw NotImplementedException();
 }
 
+PureContext
+PureContext::createContext(const std::string &at, const std::string &nm, const std::string &bu, const std::string &sk,
+                           const std::string &pk, const PureStorage &storage,
+                           const std::map<std::string, std::vector<std::string>> &externalPublicKeys,
+                           const std::string &pheServiceAddress, const std::string &kmsServiceAddress) {
+    throw NotImplementedException();
+}
+
 NonRotatableSecrets getNonrotatableSecrets() {
     throw NotImplementedException();
 }

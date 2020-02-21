@@ -3,6 +3,14 @@
 #include "virgil/crypto/foundation/vscf_key_provider.h"
 #include "virgil/purekit/VirgilCrypto/Utils.h"
 
+#include <algorithm>
+#include <iostream>
+#include <limits>
+#include <random>
+#include <vector>
+#include <virgil/purekit/VirgilCrypto/Common.h>
+
+
 namespace Utils {
 
     void destroyPrivateKey(vscf_impl_t *private_key) {
@@ -48,6 +56,21 @@ namespace Utils {
             }
         }
         return uuid;
+    }
+
+    VirgilByteArray generateData(size_t size) {
+        using value_type = unsigned char;
+        // We use static in order to instantiate the random engine
+        // and the distribution once only.
+        // It may provoke some thread-safety issues.
+        static std::uniform_int_distribution<value_type> distribution(
+                std::numeric_limits<value_type>::min(),
+                std::numeric_limits<value_type>::max());
+        static std::default_random_engine generator;
+
+        std::vector<value_type> data(size);
+        std::generate(data.begin(), data.end(), []() { return distribution(generator); });
+        return data;
     }
 }
 
