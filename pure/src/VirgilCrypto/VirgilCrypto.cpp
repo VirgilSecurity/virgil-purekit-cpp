@@ -18,6 +18,8 @@
 #include <virgil/purekit/VirgilCrypto/Utils.h>
 #include <virgil/purekit/VirgilCrypto/VirgilKeyPair.h>
 #include <virgil/purekit/exceptions/NotImplementedException.h>
+#include <virgil/crypto/foundation/vscf_key_alg_factory.h>
+#include <virgil/crypto/foundation/private/vscf_impl_private.h>
 
 VirgilByteArray VirgilCrypto::computeHash(VirgilByteArray data) {
     VirgilByteArray result (vscf_sha512_DIGEST_LEN);
@@ -37,10 +39,9 @@ VirgilKeyPair VirgilCrypto::generateKeyPair(KeyPairType type) {
     std::unique_ptr<vscf_impl_t, decltype(&Utils::destroyPrivateKey)> privateKey = provider.generatePrivateKey();
     std::unique_ptr<vscf_impl_t, decltype(&Utils::destroyPublicKey)> publicKey = provider.extractPublicKey(privateKey.get());
     std::vector<unsigned int> array;
-    VirgilPublicKey virgilPublicKey (std::move(publicKey), array);
-    KeyPair keyPair(std::move(privateKey), std::move(publicKey));
+    VirgilPublicKey virgilPublicKey (std::move(publicKey), array, type);
 
-    VirgilKeyPair vkp;
+    VirgilKeyPair vkp(std::move(virgilPublicKey));
     throw NotImplementedException();
     return vkp;
 }
@@ -48,6 +49,7 @@ VirgilKeyPair VirgilCrypto::generateKeyPair(KeyPairType type) {
 std::vector<unsigned int>VirgilCrypto::computePublicKeyIdentifier(vscf_impl_t* publicKeyIdentifier) {
     vscf_key_asn1_serializer_t* keyAsn1Serializer = vscf_key_asn1_serializer_new();
     vscf_key_asn1_serializer_setup_defaults(keyAsn1Serializer);
+    
 
     std::vector<unsigned int> vec;
     return vec;

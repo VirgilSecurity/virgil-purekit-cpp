@@ -5,7 +5,12 @@
 class VirgilKeyPair {
 
 public:
+    VirgilKeyPair();
+    VirgilKeyPair(VirgilPublicKey virgilPublicKey);
     VirgilPublicKey getPublicKey();
+
+private:
+    VirgilPublicKey publicKey;
 
 };
 
